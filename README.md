@@ -31,7 +31,7 @@ To run the script you need to:
 4. `RPC_WEBSOCKET_ENDPOINT` (websocket RPC endpoint)
 5. `QUOTE_MINT` (which pools to snipe, USDC or WSOL)
 6. `QUOTE_AMOUNT` (amount used to buy each new token)
-7. `COMMITMENT_LEVEL` (No modification required)
+7. `COMMITMENT_LEVEL` (No modification required) 
 8. `CHECK_IF_IS_BURNED` (liquidity burn check)
 9. `CHECK_IF_IS_LOCKED` (liquidity lock check)
 10. `USE_SNIPE_LIST` (buy only tokens listed in snipe-list.txt)
