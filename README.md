@@ -23,20 +23,18 @@ Configure the script by updating `.env.copy` file.
 2. PRIVATE_KEY = private key
 3. RPC_ENDPOINT = RPC endpoint
 4. RPC_WEBSOCKET_ENDPOINT websocket RPC endpoint
-5. QUOTE_MINT = which pools to snipe, USDC or WSO)
-6. QUOTE_AMOUNT = (amount used to buy each new token)
-7. COMMITMENT_LEVEL = (No modification required) 
-8. CHECK_IF_IS_BURNED = (liquidity burn check)
-9. CHECK_IF_IS_LOCKED = (liquidity lock check)
-10. `USE_SNIPE_LIST` (buy only tokens listed in snipe-list.txt)
-11. `SNIPE_LIST_REFRESH_INTERVAL` (how often snipe list should be refreshed in milliseconds)
-12. `CHECK_IF_MINT_IS_RENOUNCED` (script will buy only if mint is renounced)
-13. `MIN_POOL_SIZE` (script will buy only if pool size is greater than specified amount)
-14. `TAKE_PROFIT=50` (in %)
-15. `STOP_LOSS=30` (in %)
-16. `BIRDEYE_API_KEY=` (TP/SL, Burn/Lock) You can use the default link in the .env file, it works fine and does not need to be changed. Go here if you want to generate it yourself : https://docs.birdeye.so/docs/authentication-api-keys
-
-![](readme/env.png)
+5. QUOTE_MINT = which pools to snipe, USDC or WSO
+6. QUOTE_AMOUNT = amount used to buy each new token
+7. COMMITMENT_LEVEL = No modification required
+8. CHECK_IF_IS_BURNED = liquidity burn check
+9. CHECK_IF_IS_LOCKED = liquidity lock check
+10. USE_SNIPE_LIST = buy only tokens listed in snipe-list.txt
+11. SNIPE_LIST_REFRESH_INTERVAL = how often snipe list should be refreshed in milliseconds
+12. CHECK_IF_MINT_IS_RENOUNCED = script will buy only if mint is renounced
+13. MIN_POOL_SIZE = script will buy only if pool size is greater than specified amount
+14. TAKE_PROFIT=50 = in %
+15. STOP_LOSS=30 = in %
+16. BIRDEYE_API_KEY= (TP/SL, Burn/Lock) You can use the default link in the .env file, it works fine and does not need to be changed. Go here if you want to generate it yourself : https://docs.birdeye.so/docs/authentication-api-keys
   
 ## INSTALL
 1. Install dependencies by typing: `npm install`
@@ -63,8 +61,6 @@ By default, auto sell is enabled. If you want to disable it, you need to:
 If you set AUTO_SELL_DELAY to 0, token will be sold immediately after it is bought.
 There is no guarantee that the token will be sold at a profit or even sold at all. The developer is not responsible for any losses incurred by using this feature.
 
-![](readme/token.png)
-
 ## SNIPE LIST
 By default, script buys each token which has a new liquidity pool created and open for trading.
 There are scenarios when you want to buy one specific token as soon as possible during the launch event.
@@ -77,9 +73,6 @@ You can update the list while script is running. Script will check for new value
 
 Pool must not exist before the script starts.
 It will buy only when new pool is open for trading. If you want to buy token that will be launched in the future, make sure that script is running before the launch.
-
-![](readme/snipelist.png)
-
 
 ## COMMON ISSUES
 
@@ -103,7 +96,7 @@ It will buy only when new pool is open for trading. If you want to buy token tha
 > FIX: Go to dex and swap some SOL to USDC/WSOL. When you swap sol to wsol you should see it in wallet.
 
 ## CONTACT
-Telegram: `@AhmedRabby2002`
+Telegram: `@stevensprg`
 
 ## DISCLAIMER
 
