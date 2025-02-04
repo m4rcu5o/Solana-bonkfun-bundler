@@ -1,5 +1,3 @@
-![](https://github.com/husreodev/Solana-raydium-sniper-bot/blob/main/public/hq720.jpg)
-
 <img src = "https://github.com/husreodev/Solana-raydium-sniper-bot/blob/main/public/hq720.jpg" style = "width:100%" />
 
 **Solana Raydium Sniper Bot** that listens to new Raydium USDC or SOL pools and buys tokens for a fixed amount in USDC/SOL.
@@ -13,29 +11,23 @@ Depending on the speed of the RPC node, the purchase usually happens before the 
 - `Renounce Check`
 - `Fast Buy`
 
-> [!NOTE]
-> This is provided as is, for learning purposes.
-
 ## SETUP
 To run the script you need to:
 1. Create a new empty Solana wallet
 2. Transfer some SOL to it
 3. Convert some SOL to USDC or WSOL (you need USDC or WSOL depending on the configuration set below)
 
-`Jupiter Wrap` : https://jup.ag/
-
-![](readme/jupiterwrap.png)
-
 ## CONFIG
-1. Configure the script by updating `.env.copy` file (**remove the .copy from the file name when done**).
-2. `PRIVATE_KEY` (your wallet private key)
-3. `RPC_ENDPOINT` (https RPC endpoint)
-4. `RPC_WEBSOCKET_ENDPOINT` (websocket RPC endpoint)
-5. `QUOTE_MINT` (which pools to snipe, USDC or WSOL)
-6. `QUOTE_AMOUNT` (amount used to buy each new token)
-7. `COMMITMENT_LEVEL` (No modification required) 
-8. `CHECK_IF_IS_BURNED` (liquidity burn check)
-9. `CHECK_IF_IS_LOCKED` (liquidity lock check)
+Configure the script by updating `.env.copy` file.
+
+2. PRIVATE_KEY = private key
+3. RPC_ENDPOINT = RPC endpoint
+4. RPC_WEBSOCKET_ENDPOINT websocket RPC endpoint
+5. QUOTE_MINT = which pools to snipe, USDC or WSO)
+6. QUOTE_AMOUNT = (amount used to buy each new token)
+7. COMMITMENT_LEVEL = (No modification required) 
+8. CHECK_IF_IS_BURNED = (liquidity burn check)
+9. CHECK_IF_IS_LOCKED = (liquidity lock check)
 10. `USE_SNIPE_LIST` (buy only tokens listed in snipe-list.txt)
 11. `SNIPE_LIST_REFRESH_INTERVAL` (how often snipe list should be refreshed in milliseconds)
 12. `CHECK_IF_MINT_IS_RENOUNCED` (script will buy only if mint is renounced)
