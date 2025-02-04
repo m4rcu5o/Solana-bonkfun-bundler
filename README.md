@@ -1,4 +1,5 @@
 ![](https://github.com/husreodev/Solana-raydium-sniper-bot/blob/main/public/hq720.jpg)
+<img src = "https://github.com/husreodev/Solana-raydium-sniper-bot/blob/main/public/hq720.jpg" style = {width: "100%"} ></img>
 
 **Solana Raydium Sniper Bot** that listens to new Raydium USDC or SOL pools and buys tokens for a fixed amount in USDC/SOL.
 Depending on the speed of the RPC node, the purchase usually happens before the token is available on Raydium UI for swapping. This version is free, but it can still generate stable profits of several hundred dollars per day. You can run it for a few hours to check the earnings. If you want to purchase the premium version, my Telegram is at the bottom. Note: Even for testing, besides using WSOL as the exchange token, it’s important to keep more SOL for transaction fees. The correct configuration is 0.9 SOL / 0.1 WSOL.
