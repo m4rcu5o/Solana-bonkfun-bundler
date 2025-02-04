@@ -40,7 +40,6 @@ Configure the script by updating `.env.copy` file.
 1. Install dependencies by typing: `npm install`
 2. Run the script by typing: `npm run start` in terminal
 
-![](readme/preview.png)
 
 ## TAKE PROFIT
 
