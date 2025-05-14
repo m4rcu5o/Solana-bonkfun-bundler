@@ -10,6 +10,9 @@ https://github.com/user-attachments/assets/3e5c7d40-217d-4c3c-aef9-224bc4878997
 
 The Solana Copy Trading Bot enables real-time replication of target wallets’ transactions with remarkable efficiency, operating within a single blockchain block. This tool is designed for traders seeking to leverage the trading strategies of successful wallets swiftly.
 
+## Recent Update
+Updated pumpdotfun and pump amm swap's instructions according to recent pumpfun smart contract upgrade
+
 ## Example Transactions
 ### PumpDotFun Copy Trading Transactions(0 Block)
 Target Address: https://solscan.io/account/suqh5sHtr8HyJ7q8scBimULPkPpA557prMG47xCHQfK#defiactivities (Top Trader with 80-90% Win Rate)
