@@ -1,0 +1,29 @@
+2025-06-09T23:10:04.729Z - Simulation tx error: {
+  "InstructionError": [
+    3,
+    {
+      "Custom": 1
+    }
+  ]
+}
+2025-06-09T23:26:45.558Z - Simulation tx error: {
+  "InsufficientFundsForRent": {
+    "account_index": 1
+  }
+}
+2025-06-09T23:27:47.226Z - Simulation tx error: {
+  "InstructionError": [
+    0,
+    {
+      "Custom": 1
+    }
+  ]
+}
+2025-06-10T12:45:58.615Z - Simulation sendsol error: {
+  "InstructionError": [
+    2,
+    {
+      "Custom": 1
+    }
+  ]
+}

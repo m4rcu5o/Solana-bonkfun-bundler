@@ -1,0 +1,342 @@
+{
+	"address": "4UChYHQmJ9LJAK547uiXhxuJtq5sFrVAsvfgKRsd6veo",
+	"metadata": {
+		"name": "ray_launchlab_swap",
+		"version": "0.1.0",
+		"spec": "0.1.0"
+	},
+	"instructions": [
+		{
+			"name": "perform_swap",
+			"discriminator": [207, 15, 119, 125, 179, 96, 10, 140],
+			"accounts": [
+				{
+					"name": "cp_swap_program"
+				},
+				{
+					"name": "payer",
+					"signer": true
+				},
+				{
+					"name": "authority"
+				},
+				{
+					"name": "amm_config"
+				},
+				{
+					"name": "pool_state",
+					"writable": true
+				},
+				{
+					"name": "input_token_account",
+					"writable": true
+				},
+				{
+					"name": "output_token_account"
+				},
+				{
+					"name": "input_vault",
+					"writable": true
+				},
+				{
+					"name": "output_vault",
+					"writable": true
+				},
+				{
+					"name": "input_token_program"
+				},
+				{
+					"name": "output_token_program"
+				},
+				{
+					"name": "input_token_mint"
+				},
+				{
+					"name": "output_token_mint"
+				},
+				{
+					"name": "observation_state",
+					"writable": true
+				}
+			],
+			"args": [
+				{
+					"name": "amount_out",
+					"type": "u64"
+				},
+				{
+					"name": "swap_direction",
+					"type": "u8"
+				}
+			]
+		}
+	],
+	"accounts": [
+		{
+			"name": "AmmConfig",
+			"discriminator": [218, 244, 33, 104, 203, 203, 43, 111]
+		},
+		{
+			"name": "ObservationState",
+			"discriminator": [122, 174, 197, 53, 129, 9, 165, 132]
+		},
+		{
+			"name": "PoolState",
+			"discriminator": [247, 237, 227, 245, 215, 195, 222, 70]
+		}
+	],
+	"types": [
+		{
+			"name": "Observation",
+			"docs": ["The element of observations in ObservationState"],
+			"type": {
+				"kind": "struct",
+				"fields": [
+					{
+						"name": "block_timestamp",
+						"docs": ["The block timestamp of the observation"],
+						"type": "u64"
+					},
+					{
+						"name": "cumulative_token0_price_x32",
+						"docs": ["the cumulative of token0 price during the duration time, Q32.32, the remaining 64 bit for overflow"],
+						"type": "u128"
+					},
+					{
+						"name": "cumulative_token1_price_x32",
+						"docs": ["the cumulative of token1 price during the duration time, Q32.32, the remaining 64 bit for overflow"],
+						"type": "u128"
+					}
+				]
+			}
+		},
+		{
+			"name": "AmmConfig",
+			"docs": ["Holds the current owner of the factory"],
+			"type": {
+				"kind": "struct",
+				"fields": [
+					{
+						"name": "bump",
+						"docs": ["Bump to identify PDA"],
+						"type": "u8"
+					},
+					{
+						"name": "disable_create_pool",
+						"docs": ["Status to control if new pool can be create"],
+						"type": "bool"
+					},
+					{
+						"name": "index",
+						"docs": ["Config index"],
+						"type": "u16"
+					},
+					{
+						"name": "trade_fee_rate",
+						"docs": ["The trade fee, denominated in hundredths of a bip (10^-6)"],
+						"type": "u64"
+					},
+					{
+						"name": "protocol_fee_rate",
+						"docs": ["The protocol fee"],
+						"type": "u64"
+					},
+					{
+						"name": "fund_fee_rate",
+						"docs": ["The fund fee, denominated in hundredths of a bip (10^-6)"],
+						"type": "u64"
+					},
+					{
+						"name": "create_pool_fee",
+						"docs": ["Fee for create a new pool"],
+						"type": "u64"
+					},
+					{
+						"name": "protocol_owner",
+						"docs": ["Address of the protocol fee owner"],
+						"type": "pubkey"
+					},
+					{
+						"name": "fund_owner",
+						"docs": ["Address of the fund fee owner"],
+						"type": "pubkey"
+					},
+					{
+						"name": "padding",
+						"docs": ["padding"],
+						"type": {
+							"array": ["u64", 16]
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "ObservationState",
+			"type": {
+				"kind": "struct",
+				"fields": [
+					{
+						"name": "initialized",
+						"docs": ["Whether the ObservationState is initialized"],
+						"type": "bool"
+					},
+					{
+						"name": "observation_index",
+						"docs": ["the most-recently updated index of the observations array"],
+						"type": "u16"
+					},
+					{
+						"name": "pool_id",
+						"type": "pubkey"
+					},
+					{
+						"name": "observations",
+						"docs": ["observation array"],
+						"type": {
+							"array": [
+								{
+									"defined": {
+										"name": "Observation"
+									}
+								},
+								100
+							]
+						}
+					},
+					{
+						"name": "padding",
+						"docs": ["padding for feature update"],
+						"type": {
+							"array": ["u64", 4]
+						}
+					}
+				]
+			}
+		},
+		{
+			"name": "PoolState",
+			"type": {
+				"kind": "struct",
+				"fields": [
+					{
+						"name": "amm_config",
+						"docs": ["Which config the pool belongs"],
+						"type": "pubkey"
+					},
+					{
+						"name": "pool_creator",
+						"docs": ["pool creator"],
+						"type": "pubkey"
+					},
+					{
+						"name": "token0_vault",
+						"docs": ["Token A"],
+						"type": "pubkey"
+					},
+					{
+						"name": "token1_vault",
+						"docs": ["Token B"],
+						"type": "pubkey"
+					},
+					{
+						"name": "lp_mint",
+						"docs": ["Pool tokens are issued when A or B tokens are deposited.", "Pool tokens can be withdrawn back to the original A or B token."],
+						"type": "pubkey"
+					},
+					{
+						"name": "token0_mint",
+						"docs": ["Mint information for token A"],
+						"type": "pubkey"
+					},
+					{
+						"name": "token1_mint",
+						"docs": ["Mint information for token B"],
+						"type": "pubkey"
+					},
+					{
+						"name": "token0_program",
+						"docs": ["token_0 program"],
+						"type": "pubkey"
+					},
+					{
+						"name": "token1_program",
+						"docs": ["token_1 program"],
+						"type": "pubkey"
+					},
+					{
+						"name": "observation_key",
+						"docs": ["observation account to store oracle data"],
+						"type": "pubkey"
+					},
+					{
+						"name": "auth_bump",
+						"type": "u8"
+					},
+					{
+						"name": "status",
+						"docs": [
+							"Bitwise representation of the state of the pool",
+							"bit0, 1: disable deposit(vaule is 1), 0: normal",
+							"bit1, 1: disable withdraw(vaule is 2), 0: normal",
+							"bit2, 1: disable swap(vaule is 4), 0: normal"
+						],
+						"type": "u8"
+					},
+					{
+						"name": "lp_mint_decimals",
+						"type": "u8"
+					},
+					{
+						"name": "mint0_decimals",
+						"docs": ["mint0 and mint1 decimals"],
+						"type": "u8"
+					},
+					{
+						"name": "mint1_decimals",
+						"type": "u8"
+					},
+					{
+						"name": "lp_supply",
+						"docs": ["True circulating supply without burns and lock ups"],
+						"type": "u64"
+					},
+					{
+						"name": "protocol_fees_token0",
+						"docs": ["The amounts of token_0 and token_1 that are owed to the liquidity provider."],
+						"type": "u64"
+					},
+					{
+						"name": "protocol_fees_token1",
+						"type": "u64"
+					},
+					{
+						"name": "fund_fees_token0",
+						"type": "u64"
+					},
+					{
+						"name": "fund_fees_token1",
+						"type": "u64"
+					},
+					{
+						"name": "open_time",
+						"docs": ["The timestamp allowed for swap in the pool."],
+						"type": "u64"
+					},
+					{
+						"name": "recent_epoch",
+						"docs": ["recent epoch"],
+						"type": "u64"
+					},
+					{
+						"name": "padding",
+						"docs": ["padding for future updates"],
+						"type": {
+							"array": ["u64", 31]
+						}
+					}
+				]
+			}
+		}
+	]
+}
